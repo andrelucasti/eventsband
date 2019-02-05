@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: event-service
+  labels:
+    app: event-producer
+
+spec:
+  ports:
+  - port: 30001
+    nodePort: 30001
+    protocol: TCP
+    targetPort: event-port
+  type: NodePort
+  selector:
+    app: event-producer

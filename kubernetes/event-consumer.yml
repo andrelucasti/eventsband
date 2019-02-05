@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: event-consumer
+  labels:
+    app: event-consumer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: event-consumer
+  template:
+    metadata:
+      labels:
+        app: event-consumer
+
+    spec:
+      containers:
+        - name: event-consumer
+          imagePullPolicy: Never
+          image: event/event-consumer:1.0
+          ports:
+            - name: event-port
+              containerPort: 8181

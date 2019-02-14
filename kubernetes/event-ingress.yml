@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: event-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /producer
+        backend:
+          serviceName: event-producer-service
+          servicePort: 30001
+      - path: /consumer
+        backend:
+          serviceName: event-consumer-service
+          servicePort: 30002

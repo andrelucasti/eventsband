@@ -1,6 +1,13 @@
 spring:
   application:
     name: event-consumer
+  data:
+    mongodb:
+      host: ${MONGODB_HOST}
+      port: 27017
+      database: ${MONGODB_DATABASE}
+      repositories:
+        enable: true
 
 
 server:

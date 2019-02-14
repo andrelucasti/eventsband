@@ -22,3 +22,16 @@ spec:
           ports:
             - name: event-port
               containerPort: 8181
+          env:
+            - name: MONGODB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: mongodb
+                  key: host
+            - name: MONGODB_DATABASE
+              valueFrom:
+                configMapKeyRef:
+                  name: mongodb
+                  key: database-name
+
+
